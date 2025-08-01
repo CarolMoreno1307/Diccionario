@@ -1,0 +1,54 @@
+class Persona:
+    def __init__(self, nombre, edad, profesion):
+        self.datos = {
+            "nombre": nombre,
+            "edad": edad,
+            "profesion": profesion
+        }
+
+    def mostrar(self):
+        print("Datos:", self.datos)
+
+    def longitud(self):
+        print("Longitud:", len(self.datos))
+
+    def obtener(self, clave, defecto="No existe"):
+        print(f"{clave.title()}:", self.datos.get(clave, defecto))
+
+    def copiar(self):
+        copia = self.datos.copy()
+        print("Copia:", copia)
+
+    def eliminar_profesion(self):
+        valor = self.datos.pop("profesion", None)
+        print("Profesión eliminada:", valor)
+
+    def eliminar_ultimo(self):
+        valor = self.datos.popitem()
+        print("Último ítem eliminado:", valor)
+
+    def establecer_ciudad(self):
+        self.datos.setdefault("ciudad", "Cúcuta")
+        print("Ciudad añadida si no existía:", self.datos)
+
+    def actualizar(self, nuevos_datos):
+        self.datos.update(nuevos_datos)
+        print("Datos actualizados:", self.datos)
+
+    def limpiar(self):
+        self.datos.clear()
+        print("Datos vaciados:", self.datos)
+
+
+# Usar la clase
+carol = Persona("Carol", 22, "Farmacia")
+carol.mostrar()
+carol.longitud()
+carol.obtener("nombre")
+carol.obtener("apellido")
+carol.copiar()
+carol.eliminar_profesion()
+carol.eliminar_ultimo()
+carol.establecer_ciudad()
+carol.actualizar({"pais": "Colombia"})
+carol.limpiar()
